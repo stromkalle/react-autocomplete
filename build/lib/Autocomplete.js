@@ -575,18 +575,19 @@ Autocomplete.keyDownHandlers = {
       return;
     } else if (this.state.highlightedIndex == null) {
       // input has focus but no menu item is selected + enter is hit -> close the menu, highlight whatever's in input
+      var value = event.target.value;
       event.preventDefault();
       this.setState({
         isOpen: false
       }, function () {
-        _this7.props.onSelect(event.target.value, null);
+        _this7.props.onSelect(value, null);
         //this.refs.input.select()
       });
     } else {
       // text entered + menu item has been highlighted + enter is hit -> update value to that of selected menu item, close the menu
       event.preventDefault();
       var item = this.getFilteredItems(this.props)[this.state.highlightedIndex];
-      var value = this.props.getItemValue(item);
+      var _value = this.props.getItemValue(item);
       this.setState({
         isOpen: false,
         highlightedIndex: null
@@ -596,7 +597,7 @@ Autocomplete.keyDownHandlers = {
         //   value.length,
         //   value.length
         // )
-        _this7.props.onSelect(value, item);
+        _this7.props.onSelect(_value, item);
       });
     }
   },
