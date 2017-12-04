@@ -588,11 +588,11 @@ Autocomplete.keyDownHandlers = {
       return;
     } else if (this.state.highlightedIndex == null) {
       // input has focus but no menu item is selected + enter is hit -> close the menu, highlight whatever's in input
-      e.preventDefault();
+      event.preventDefault();
       this.setState({
         isOpen: false
       }, function () {
-        _this7.props.onSelect(e.target.value, null);
+        _this7.props.onSelect(event.target.value, null);
         //this.refs.input.select()
       });
     } else {
